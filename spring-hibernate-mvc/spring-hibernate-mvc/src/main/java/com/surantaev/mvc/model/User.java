@@ -7,7 +7,7 @@ import java.util.List;
 @Table(name = "users")
 public class User {
 
-    @Id
+   /* @Id
     @SequenceGenerator(
             name = "user_sequence",
             sequenceName = "user_sequence",
@@ -16,13 +16,16 @@ public class User {
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
             generator = "user_sequence"
-    )
-    private int id;
+    )*/
+   @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Car> cars;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "car_id")
+    private Car car;
 
     public User() {
     }
@@ -31,11 +34,11 @@ public class User {
         this.name = name;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -47,11 +50,11 @@ public class User {
         this.name = name;
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public Car getCar() {
+        return car;
     }
 
-    public void setCars(List<Car> cars) {
-        this.cars = cars;
+    public void setCar(Car car) {
+        this.car = car;
     }
 }

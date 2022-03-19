@@ -1,5 +1,6 @@
 package com.surantaev.mvc.dao;
 
+import com.surantaev.mvc.model.Car;
 import com.surantaev.mvc.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -22,7 +23,6 @@ public class UserDaoImplements implements UserDao{
     public void saveUser(User user) {
         Session session = sessionFactory.getCurrentSession();
         session.save(user);
-        //session = sessionFactory.openSession().save(user);
     }
 
     @Override
@@ -44,9 +44,16 @@ public class UserDaoImplements implements UserDao{
         user1.setName(user.getName());
     }
 
-    public void delete(int id) {
+    public void delete(Long id) {
         Session session = sessionFactory.getCurrentSession();
-        session.remove(session.get(User.class, id));
+        session.delete(session.get(User.class, id));
+    }
+
+    /*---------------------------------------------------------Car------------------------------------------------*/
+
+    @Override
+    public List<Car> getUserCar() {
+        return sessionFactory.openSession().createQuery("FROM Car").getResultList();
     }
 
 }

@@ -1,5 +1,6 @@
 package com.surantaev.mvc.service;
 
+import com.surantaev.mvc.model.Car;
 import com.surantaev.mvc.model.User;
 
 import java.util.List;
@@ -15,6 +16,8 @@ public interface UserService {
 
     void update(User user, int id);
 
-    void delete(int id);
+    void delete(Long id);
+
+    List<Car> getUserCar();
 
 }

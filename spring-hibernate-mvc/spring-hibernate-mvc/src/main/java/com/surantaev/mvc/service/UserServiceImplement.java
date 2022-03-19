@@ -1,6 +1,7 @@
 package com.surantaev.mvc.service;
 
 import com.surantaev.mvc.dao.UserDao;
+import com.surantaev.mvc.model.Car;
 import com.surantaev.mvc.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,8 +37,15 @@ public class UserServiceImplement implements UserService {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
         userDao.delete(id);
+    }
+
+
+
+    @Override
+    public List<Car> getUserCar() {
+        return userDao.getUserCar();
     }
 }
 

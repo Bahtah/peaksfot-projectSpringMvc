@@ -4,6 +4,7 @@
     <option name="state">
       <map>
         <entry key="file://$PROJECT_DIR$/spring-hibernate-mvc/spring-hibernate-mvc/src/main/webapp/WEB-INF/view/add-user.html" value="file://$PROJECT_DIR$/spring-hibernate-mvc/spring-hibernate-mvc/src/main/webapp/WEB-INF/view" />
+        <entry key="file://$PROJECT_DIR$/spring-hibernate-mvc/spring-hibernate-mvc/src/main/webapp/WEB-INF/view/delete-user.html" value="file://$PROJECT_DIR$/spring-hibernate-mvc/spring-hibernate-mvc/src/main/webapp/WEB-INF/view" />
         <entry key="file://$PROJECT_DIR$/spring-hibernate-mvc/spring-hibernate-mvc/src/main/webapp/WEB-INF/view/get-user.html" value="file://$PROJECT_DIR$/spring-hibernate-mvc/spring-hibernate-mvc/src/main/webapp/WEB-INF/view" />
       </map>
     </option>

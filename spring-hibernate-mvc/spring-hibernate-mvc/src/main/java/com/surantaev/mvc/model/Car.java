@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Table(name = "cars")
 public class Car {
 
-    @Id
+    /*@Id
     @SequenceGenerator(
             name = "car_sequence",
             sequenceName = "car_sequence",
@@ -16,14 +16,19 @@ public class Car {
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
             generator = "car_sequence"
-    )
+    )*/
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String name;
     private String color;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    /*@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
+    private User user;*/
+
+    @OneToOne(mappedBy = "car", cascade = CascadeType.ALL)
     private User user;
 
     public Car() {
@@ -65,4 +70,5 @@ public class Car {
     public void setUser(User user) {
         this.user = user;
     }
+
 }

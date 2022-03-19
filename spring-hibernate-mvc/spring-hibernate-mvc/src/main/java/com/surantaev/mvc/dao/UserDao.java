@@ -1,5 +1,6 @@
 package com.surantaev.mvc.dao;
 
+import com.surantaev.mvc.model.Car;
 import com.surantaev.mvc.model.User;
 
 import java.util.List;
@@ -14,5 +15,7 @@ public interface UserDao {
 
     void update(User user, int id);
 
-    void delete(int id);
+    void delete(Long id);
+
+    List<Car> getUserCar();
 }

@@ -22,17 +22,21 @@ public class MyController {
         this.userService = userService;
     }
 
+    //Ссылка на страницу формы
     @GetMapping("/add-user")
     public String pageAdd() {
         return "add-user";
     }
 
+    //Метод добавления пользователя
     @PostMapping("/add")
-    public User addNewUser(@RequestBody User user) {
+    public String saveUser(User user, Model model) {
         userService.saveUser(user);
-        return user;
+        model.addAttribute("users", userService.getAllUsers());
+        return "redirect:/api/get-users";
     }
 
+    //метод получения всех пользователей
     @GetMapping("/get-users")
     public String getUsers(Model model) {
         List<User> allUsers = userService.getAllUsers();
@@ -40,11 +44,18 @@ public class MyController {
         return "get-user";
     }
 
-
-    @GetMapping("/update-user/{id}")
+    //метод изменения пользователя
+    @GetMapping("/update-user")
     public String updateUser(@PathVariable("id") int id, Model model) {
         model.addAttribute("users", userService.getUserById(id));
-        return "redirect:/api/get-users";
+        return "redirect:api/get-users";
+    }
+
+    //метод удаления пользователя
+    @DeleteMapping ("/delete{id}")
+    public String deleteUser(@PathVariable Long id) {
+        userService.delete(id);
+        return "redirect:api/get-users";
     }
 
 }

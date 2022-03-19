@@ -14,46 +14,54 @@
 <h1 class="text-center">All Users</h1>
 <br>
 
-<button type="submit" class="btn btn-success"><a href="add-user">Add User</a></button>
+>
+<div class="container">
+    <button type="submit" class="btn btn-success"><a href="add-user">ADD</a></button>
 
-<table class="table">
-    <thead>
+    <!--<table class="table">
+        <thead>
+            <tr>
+                <th scope="col-">id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Auto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user: ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.car}"></td>
+
+            </tr>
+        </tbody>
+    </table>-->
+
+    <table class="table">
         <tr>
-            <th scope="col-">id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Auto</th>
+            <th> User Id</th>
+            <th> User Name</th>
         </tr>
-    </thead>
-    <tbody>
-        <tr th:each="user: ${users}">
-            <td th:text="${user.id}"></td>
-            <td th:text="${user.name}"></td>
-            <td th:text="${user.cars}"></td>
 
-        </tr>
-    </tbody>
-</table>
+        <div th:each="user : ${users}">
+            <tr>
+                <td>
+                    <p th:text="${user.id}"></p>
+                </td>
+                <td>
+                    <p th:text="${user.name}"></p>
+                </td>
 
-<!--<table class="table">
-    <tr>
-        <th> Id </th>
-        <th> Name </th>
-        <th> Car </th>
-    </tr>
-    <div th:each="user : ${users}">
-        <tr>
-            <td>
-                <p th:text="${user.getId()}"></p>
-            </td>
-            <td>
-                <p th:text="${user.getName()}"></p>
-            </td>
-            <td>
-                <p th:text="${user.getCars()}"></p>
-            </td>
-        </tr>
-    </div>
-</table>-->
+                <td>
+                    <form th:action="@{/delete/{id}(id=${user.id})}" th:method="DELETE">
+                        <button type="submit" class="btn btn-danger" data-toggle="modal"
+                                data-target="#deleteModal">Delete
+                        </button>
+                    </form>
+                </td>
+
+            </tr>
+        </div>
+    </table>
 
 </body>
 </html>
